@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test'
 import { navigateToStartNewQuotePage } from '../utils/nav';
 import { login } from '../utils/auth';
-import { fillCustomerInfo, fillQuoteInfo, addItemToQuote } from '../utils/quote';
+import { fillCustomerInfo, fillQuoteInfo, addItemToQuote, goToQuote } from '../utils/quote';
 import { quoteCases } from '../data/taskCases';
 
 
@@ -24,9 +24,10 @@ for (const quoteCase of quoteCases) {
         await navigateToStartNewQuotePage(page);
 
         await fillCustomerInfo(page, quoteCase.customer);
-        await fillQuoteInfo(page, quoteCase.quote);
+        await fillQuoteInfo(page, quoteCase.quote, quoteCase.customer);
 
         await addItemToQuote(page);
+        await goToQuote(page);
 
     })
 }

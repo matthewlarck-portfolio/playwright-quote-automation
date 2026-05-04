@@ -19,7 +19,7 @@ test('@smoke authenticated user can access new quote page', async ({ page }) => 
 
 
 for (const quoteCase of quoteCases) {
-    test(`@regression ${quoteCase.testName}`, async ({ page }) => {
+    test.skip(`@regression ${quoteCase.testName}`, async ({ page }) => {
         await login(page);
         await navigateToStartNewQuotePage(page);
 

@@ -27,7 +27,9 @@ export default defineConfig({
   use: {
     baseURL: process.env.BASE_URL || 'https://designerblinds-c482a.web.app',
     trace: 'on-first-retry',
-    headless: false, 
+    headless: !!process.env.CI, 
+    screenshot: 'only-on-failure',
+    video: 'retain-on-failure',
     
 /*  
     launchOptions: {
